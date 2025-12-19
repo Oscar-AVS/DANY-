@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendario Navideño de Canciones</title>
+
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&display=swap');
+
+     body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: repeating-linear-gradient(45deg,#b1001b 0px,#b1001b 50px,#ffffff 50px,#ffffff 100px);
+      padding:18px;
+      min-height:100vh;
+    }
+
+    .frame{
+      max-width:980px;
+      margin:auto;
+      background: rgba(255,255,255,.94);
+      border:4px solid #2b004d;
+      box-shadow: 0 0 0 2px #7b2cff inset, 0 30px 80px rgba(0,0,0,.25);
+      border-radius:18px;
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    h1{
+      margin:8px 0 18px;
+      text-align:center;
+      font-family:"Playfair Display", serif;
+      font-size:46px;
+      color:#2b004d;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+     .sidePics{
+      position:absolute;
+      top: 92px;
+      left:0;
+      right:0;
+      bottom:10px;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .sidePic{
+      width:130px;
+      height:130px;
+      border-radius:20px;
+      border:3px solid rgba(124,92,255,.6);
+      overflow:hidden;
+      position:absolute;
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+      background:#e2e8f0;
+    }
+
+    .sidePic img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+     .L1{ left:18px; top:90px;  transform: rotate(-10deg); }
+    .L2{ left:18px; top:260px; transform: rotate(8deg); }
+    .L3{ left:18px; top:430px; transform: rotate(-8deg); }
+
+     .R1{ right:18px; top:90px;  transform: rotate(10deg); }
+    .R2{ right:18px; top:260px; transform: rotate(-8deg); }
+    .R3{ right:18px; top:430px; transform: rotate(8deg); }
+
+     .center{
+      display:flex;
+      justify-content:center;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      width: min(520px, 100%);
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin: 0 170px;  
+    }
+
+     .tile{
+      min-height:140px;
+      border-radius:28px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      font-weight:900;
+      cursor:pointer;
+      padding:12px;
+      user-select:none;
+      box-shadow:0 18px 45px rgba(0,0,0,.18);
+    }
+
+     .red{ background:#c1121f; color:white; }
+    .white{ background:#ffffff; color:#0f172a; }
+
+     .revealed{
+      color:#0f172a;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .album{
+      width:80px;
+      height:80px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.12);
+      background:#fff;
+    }
+
+    .album img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .hint{
+      font-size:12px;
+      font-weight:800;
+      opacity:.9;
+    }
+
+     .modalBg{
+      position:fixed;
+      inset:0;
+      display:none;
+      justify-content:center;
+      align-items:center;
+      background: rgba(0,0,0,.6);
+      padding:18px;
+      z-index:50;
+    }
+
+    .modal{
+      width: min(640px, 100%);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
+
+    .modalHeader{
+      padding:14px 16px;
+      font-weight:900;
+      text-align:center;
+      background: rgba(255,255,255,.35);
+      backdrop-filter: blur(6px);
+    }
+
+    .modalBody{
+      padding:16px;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(6px);
+    }
+
+    .letter{
+      white-space:pre-wrap;
+      line-height:1.55;
+      font-size:14px;
+      color:#0f172a;
+    }
+
+    .btnClose{
+      margin-top:14px;
+      padding:10px;
+      width:100%;
+      border-radius:14px;
+      border:none;
+      background:#2b004d;
+      color:white;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+     @media (max-width: 920px){
+      .sidePics{ display:none; }
+      .grid{ margin:0; }
+      h1{ font-size:38px; }
+      body{ padding:10px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="frame">
+    <h1>CALENDARIO NAVIDEÑO DE CANCIONES</h1>
+
+     <div class="sidePics" aria-hidden="true">
+      <div class="sidePic L1"><img src="dany (1).jpeg" alt="Foto 1"></div>
+      <div class="sidePic L2"><img src="dany (2).jpeg" alt="Foto 2"></div>
+      <div class="sidePic L3"><img src="dany (3).jpeg" alt="Foto 3"></div>
+
+      <div class="sidePic R1"><img src="dany (4).jpeg" alt="Foto 4"></div>
+      <div class="sidePic R2"><img src="dany (5).jpeg" alt="Foto 5"></div>
+      <div class="sidePic R3"><img src="dany (6).jpeg" alt="Foto 6"></div>
+    </div>
+
+     <div class="center">
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+   <div class="modalBg" id="modalBg">
+    <div class="modal" id="modal">
+      <div class="modalHeader" id="modalTitle"></div>
+      <div class="modalBody">
+        <div class="letter" id="modalLetter"></div>
+        <div id="modalActions" style="margin-top:14px;"></div>
+        <button class="btnClose" onclick="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+     const dayColors = {
+      1:"#F04A4A",2:"#7F95A5",3:"#B8B2A6",
+      4:"#B85B53",5:"#4E9A7D",6:"#5EC3E9",
+      7:"#7D86A7",8:"#E2D5B8",9:"#B85B53",
+      10:"#5E7F99",11:"#F0C78F",12:"#A9ADB3"
+    };
+
+     const days = [
+      { day: 1,  cover:"cancion (11).jpeg", letter:"Que mejor  que empezar esta pequeña lista de canciones con una navideña, debo confesar que no la conocía hasta hace poco pero en serio amor,  contigo, todos los días son como la Navidad, tú iluminas mi vida y me haces creer que todo es posible cuando estamos juntos. Eres mi mayor regalo.",  spotifyIframeId: 1 },
+      { day: 2,  cover:"cancion (3).jpeg",  letter:"Muy de señor, lo acepto pero Dios Mío cómo pienso en ti cuando la escucho. Siempre que estamos lejitos, extraño tu mirada, y el sabor de tus besos. Para mi cada caricia tuya, cada momento contigo es tan dulce que no puedo resistirme. Eres mi debilidad más hermosa Dany.",  spotifyIframeId: 2 },
+      { day: 3,  cover:"cancion (1).jpeg",  letter:"Clásico de clásicos, el pensar en un futuro juntos solo me relacionan más con esta hermosa canción, quiero huir juntos a una nueva vida juntos, nuestro futuro juntos, nuestro rinconcito en el cielo, yo sé  que alcanzaremos todo lo que nos hemos propuesto. Juntos  cualquier obstáculo se vuelve pequeño.",  spotifyIframeId: 3 },
+      { day: 4,  cover:"cancion (4).jpeg",  letter:"Esta canción es todo lo que para mi representa nuestra relación, sólo eres tú para mi y solo quiero que seas tú. Hay mil canciones que me recuerdan a nosotros pero esta sin lugar a dudas me recuerda de todos nuestros momentos juntos, cada recuerdo lindo lo guardo en un lugar en mi corazón.",  spotifyIframeId: 4 },
+      { day: 5,  cover:"cancion (5).jpeg",  letter:"Aunque me he alejado un poquito de mis raíces swifties, te agradezco el haberme enseñado esta canción mi amor, tú eres mi lista de deseos, eres mi mayor regalo y deseo a Dios me permita pasar toda la vida juntos.  Eres el sueño que no sabía que había estado esperando toda la vida.",  spotifyIframeId: 5 },
+      { day: 6,  cover:"cancion (6).jpeg",  letter:"Esta canción siento que está un poco basic, pero amorcito en pocas palabras me gustas tú, tal cual eres, me gusta todo TODOO de ti.  Me gusta tu risa, tu forma de ver el mundo, tus sueños. Me gustas tú completamente, de pies a cabeza. Amo todo de ti.",  spotifyIframeId: 6 },
+      { day: 7,  cover:"cancion (7).jpeg",  letter:"A lo mejor está pudiera estar medio rara, pero para mi significa que nunca voy a dejar que nada se meta entre nosotros dos. Sé que a veces podemos ser muy diferentes pero juntos creamos algo  hermoso y eres mi complemento perfecto.",  spotifyIframeId: 7 },
+      { day: 8,  cover:"cancion (8).jpeg",  letter:"Otro clásico, para mi esta canción me recuerda a que nuestro amor aunque sea de diferentes colores o maneras de expresarlo siempre es algo tan puro y sincero y yo siento ese amor en cada gesto, en cada mirada y te prometo amarte siempre.",  spotifyIframeId: 8 },
+      { day: 9,  cover:"cancion (9).jpeg",  letter:"Muchas veces te lo he dicho pero tus abrazos son los lugares donde más seguro me siento, tú eres mi todo amor y el simple hecho de existir le da paz a mi vida. Tu eres es mi lugar favorito en el mundo y cuando me abrazas, todo lo malo desaparece.",  spotifyIframeId: 9 },
+      { day:10,  cover:"cancion (10).jpeg", letter:"Esta canción es cuando te extraño así mucho mucho, que siento que me derrumbo y se me va la voz de que no te tengo a mi lado, jamás te quiero perder y quiero esforzarme todos los días por hacerte sentir amada. Lo que hay en mi corazón es tan grande que pido a Dios permita que tu sepas lo mucho que te amo.", spotifyIframeId: 10 },
+      { day:11,  cover:"cancion (12).jpeg", letter:"Muy basic también, lo acepto pero mi amor esta canción, te mentiría si te digo que no la he cantado muchas veces pensando en ti, quiero darte todo el mundo entero, bajarte las estrellas y que sepas cuanto te amo en cada detalle que te dé aunque sea muy chiquito. Te amo y me tienes tan pero taaan enamorado que el tiempo se detiene contigo.", spotifyIframeId: 11 },
+      { day:12,  cover:"cancion (2).jpeg",  letter:"Mi amor, no cabe duda que lo nuestro es un amor de verdad, lo que tenemos dudo mucho que nadie más lo tenga  y yo no quiero nunca sentir nada así por nadie más, eres mi todo, tú eres mi camino, eres la persona con quien quiero compartir mi vida y  seguir creando momentos inolvidables. ", spotifyIframeId: 12 }
+    ];
+
+     const spotifyIframes = {
+      1: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6BXGTQLFPeeTg1gQozCN7L?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      2: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7qWfrXUmYD2UG82tI0pfKm?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      3: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7nAvryV9PVCt9PQGPx7I0z?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      4: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/28Ct4qwkQXY2W5yyNCLuVI?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      5: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2TEQvxxQabwLQMqWMg1qGu?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      6: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6b37xrsNCWYIUphFBazqD6?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      7: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4TvGs15vEOOHLnzBvJwao4?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      8: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6cQbYqfJ8k5shxk4Ky0czX?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      9: `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6rCyXpDwlMf1GH2qlpjJWv?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      10:`<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4QubLlsaYXoQH3CxGxuTry?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      11:`<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4PHX6bpHDxiR9RGzAKWcyk?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+      12:`<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4Z3wNhlam0BHHnK1lZmPRU?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`
+    };
+
+     const grid = document.getElementById("grid");
+
+    for(let i=0; i<days.length; i++){
+      const item = days[i];
+      const d = item.day;
+
+      const tile = document.createElement("div");
+      tile.className = "tile " + (d % 2 === 0 ? "white" : "red");
+      tile.dataset.state = "covered";
+      tile.innerHTML = "DÍA " + d;
+
+      tile.onclick = function(){
+         if(tile.dataset.state === "covered"){
+          tile.dataset.state = "revealed";
+          tile.className = "tile revealed";
+          tile.style.background = dayColors[d];
+
+          tile.innerHTML = `
+            <div class="album">
+              <img src="${item.cover}" alt="Portada día ${d}">
+            </div>
+            <div>DÍA ${d}</div>
+            <div class="hint">Click otra vez para tu cartita :)</div>
+          `;
+          return;
+        }
+
+         openModal(item);
+      };
+
+      grid.appendChild(tile);
+    }
+
+     function openModal(item){
+      const modalBg = document.getElementById("modalBg");
+      const modal = document.getElementById("modal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalLetter = document.getElementById("modalLetter");
+      const modalActions = document.getElementById("modalActions");
+
+      modalTitle.textContent = "DÍA " + item.day;
+      modalLetter.textContent = item.letter;
+      modalActions.innerHTML = spotifyIframes[item.spotifyIframeId];
+
+      modal.style.background = dayColors[item.day];
+      modalBg.style.display = "flex";
+    }
+
+    function closeModal(){
+      document.getElementById("modalBg").style.display = "none";
+    }
+
+     document.getElementById("modalBg").onclick = function(e){
+      if(e.target.id === "modalBg"){
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>
